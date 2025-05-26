@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMG362FD1B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-TMG362FD1B');
+    </script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <title>경희의 오늘</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- CSS 스타일 추가 (head 태그 안의 styles.css 링크 아래에 추가) -->
+    <style>
+        .summary-container {
+            background-color: #f4f4f4;
+            border-radius: 8px;
+            padding: 1em;
+            margin: 1em 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #1f8dd6;
+        }
+
+        .summary-text {
+            font-size: 1.1em;
+            line-height: 1.5;
+            color: #444;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="layout" class="pure-g">
+        <div class="sidebar pure-u-1 pure-u-md-1-4">
+            <!-- A wrapper for the Side bar -->
+            <div class="header">
+                <h1 class="brand-title">경희의 오늘</h1>
+                <p></p>
+                <h2 class="brand-tagline" id="output_date">⌛⏰⏱️⏲️⏳</h2>
+                <p></p>
+
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a class="pure-button" id="submit_1">⏪</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="pure-button" id="submit_2">오늘 👀</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="pure-button" id="submit_3">⏩</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="pure-menu pure-menu-horizontal">
+                    <ul>
+                        <li class="pure-menu-item"><a href="http://mobilelab.khu.ac.kr/wordpress/fssp/?vid=15"
+                                class="pure-menu-link" target="_blank"> About</a></li>
+                        <li class="pure-menu-item"><a href="https://github.com/drsungwon/khu-today-app-PyScript"
+                                class="pure-menu-link" target="_blank">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="content pure-u-1 pure-u-md-3-4">
+            <div>
+                <!-- A wrapper for the Pinned posts -->
+                <div class="posts">
+                    <div id="display_pinned_posts">
+                    </div>
+                </div>
+
+                <!-- A wrapper for the Recent posts -->
+                <div class="posts">
+                    <h1 class="content-subhead">Recent Posts</h1>
+                    <div id="display_recent_posts">
+                        <section class="post">
+                            <header class="post-header">
+                                <h2 class="post-title">경희의 오늘을 시작중이니, 잠시만 기다려 주십시오 &#128337; &#128337; &#128337;</h2>
+                            </header>
+
+                            <div class="post-description">
+                                <p> 잠시만 (10초 정도) 기다리시면, 경희대학교에 소속한 182개 홈페이지의 공지사항을 한번에 만날 수 있습니다. <br>
+                                    기다리시기 번거러우시면, 아래의 링크를 통해서도 빠르게 시작하실 수 있습니다. </p>
+                                <a href="http://opensource.khu.ac.kr/run.html">경희의 오늘을 Dart & Flutter 버전으로 바로 시작합니다.</a>
+                            </div>
+                        </section>
+                        <section class="post">
+                            <header class="post-header">
+                                <h2 class="post-title">경희의 오늘은</h2>
+                            </header>
+
+                            <div class="post-description">
+                                <p> 풀스택 서비스 프로그래밍 (SWCON370) 교과목을 위하여 개발한 프로그램입니다. <br>
+                                    서버는 Python으로 개발되었고, 클라이언트는 JS, Python (WASM)과 Dart & Flutter로 개발되었습니다. </p>
+                                <p> 추가적인 정보는 다음의 사이트에서 확인하실 수 있습니다. </p>
+                                <p>
+                                    &#128568; 풀스택 서비스 프로그래밍 (SWCON370) 수업소개:
+                                    <a href="http://mobilelab.khu.ac.kr/wordpress/fssp/"> 수업 게시판 </a><br>
+                                    &#128571; 경희의 오늘 소개:
+                                    <a href="http://mobilelab.khu.ac.kr/wordpress/fssn/?vid=42"> 수업 게시판 </a><br>
+                                    &#128572; 경희의 오늘 서버 오픈소스:
+                                    <a href="https://github.com/drsungwon/khu-today-server"> GitHub </a><br>
+                                    &#128573; 경희의 오늘 클라이언트 오픈소스:
+                                    <a href="https://github.com/drsungwon/khu-today-app-PyScript"> GitHub (Python WASM
+                                        버전) </a><br>
+                                    &#128569; 경희의 오늘 클라이언트 오픈소스:
+                                    <a href="https://github.com/drsungwon/khu-today-app"> GitHub (Dart & Flutter 버전)
+                                    </a><br>
+                                </p>
+                            </div>
+                        </section>
+                        <section class="post">
+                            <header class="post-header">
+                                <h2 class="post-title">경희의 오늘 API는</h2>
+                            </header>
+
+                            <div class="post-description">
+                                <p> 경희의 오늘은 수집한 경희대학교 기관들의 공지사항 정보를 API로 제공하고 있습니다. <br>
+                                    API를 활용하여 App 혹은 부가 서비스를 개발하려는 경우는 다음의 양식에 맞춰 API에 접근합니다. </p>
+                                <p> (1) 오늘 날자 정보<br>
+                                    &#128045; 규칙: <a href="http://163.180.142.196:9090/today_api/today">
+                                        http://163.180.142.196:9090/today_api/today </a>
+                                </p>
+                                <p> (2) 이전 날자 정보<br>
+                                    &#128059; 규칙: http://163.180.142.196:9090/today_api/[년-월-일]<br>
+                                    &#128569; 예시: <a href="http://163.180.142.196:9090/today_api/2024-02-29">
+                                        http://163.180.142.196:9090/today_api/2024-02-29 </a>
+                                </p>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+                <!-- A wrapper for footer -->
+                <div class="footer">
+                    <div class="pure-menu pure-menu-horizontal">
+                        <ul>
+                            <li class="pure-menu-item"><a href="http://mobilelab.khu.ac.kr/wordpress/fssp/?vid=15"
+                                    class="pure-menu-link" target="_blank">About</a></li>
+                            <li class="pure-menu-item"><a href="https://github.com/drsungwon/khu-today-app-PyScript"
+                                    class="pure-menu-link" target="_blank">GitHub</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const db = {}; // key: department name, value: department code
+            let dbSortedKeys = [];
+            let doActionDateDelta = 0;
+            let isLoadingPosts = false;
+            let isDbLoaded = false;
+            let dbLoadStarted = false;
+            let retryCount = 0;
+            const MAX_RETRIES = 3;
+
+            // generateSummary 함수와 displaySummary 함수 추가
+            function generateSummary(linkTexts) {
+                // 키워드 추출 로직
+                const keywords = {};
+
+                // 기본 불용어
+                const stopWords = [
+                    '및', '또는', '등', '의', '에', '를', '이', '가', '은', '는', '을', '를', '으로', '에서',
+                    '하는', '한', '것', '안내', '공지', '모집', '모집공고', '알림', '사항', '신청', '접수', '경희대학교',
+                    '함께하는'
+                ];
+
+                // 추가 필터링 조건
+                const isNumericOnly = (word) => /^\d+$/.test(word); // 숫자로만 이루어진 문자열
+
+                // 년도/학기/월 관련 단어 패턴
+                const timePatterns = [
+                    /\d+년/, /\d+년도/, /\d+학년도/, /\d+학기/, /\d+월/, /상반기/, /하반기/, /\d+주차/,
+                    '1학기', '2학기', '1년', '2년', '3년', '4년',
+                    '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월',
+                    '상반기', '하반기', '전기', '후기'
+                ];
+
+                // 시간 관련 패턴인지 확인하는 함수
+                const isTimeRelated = (word) => {
+                    // 정규식 패턴 확인
+                    for (const pattern of timePatterns) {
+                        if (pattern instanceof RegExp && pattern.test(word)) {
+                            return true;
+                        } else if (typeof pattern === 'string' && pattern === word) {
+                            return true;
+                        }
+                    }
+                    return false;
+                };
+
+                linkTexts.forEach(text => {
+                    // 띄어쓰기로 단어 분리
+                    const words = text.split(/\s+/);
+
+                    words.forEach(word => {
+                        // 필터링 조건:
+                        // 1. 2글자 이상
+                        // 2. stopWords에 포함되지 않음
+                        // 3. 숫자로만 이루어진 문자열이 아님
+                        // 4. 시간 관련 단어가 아님
+                        if (word.length >= 2 &&
+                            !stopWords.includes(word) &&
+                            !isNumericOnly(word) &&
+                            !isTimeRelated(word)) {
+                            keywords[word] = (keywords[word] || 0) + 1;
+                        }
+                    });
+                });
+
+                // 가장 많이 등장한 상위 키워드 추출 (최대 8개)
+                const topKeywords = Object.entries(keywords)
+                    .sort((a, b) => b[1] - a[1])
+                    .slice(0, 20)
+                    .map(entry => entry[0]);
+
+                // 요약 문장 생성
+                const currentDate = new Date();
+                const dateString = `${currentDate.getFullYear()}년 ${currentDate.getMonth() + 1}월 ${currentDate.getDate()}일`;
+
+                // 요약 문장 구성
+                let summary = `오늘의 공지에는 `;
+
+                if (topKeywords.length > 0) {
+                    summary += topKeywords.slice(0, -1).join(', ');
+                    if (topKeywords.length > 1) {
+                        summary += ` 및 ${topKeywords[topKeywords.length - 1]}`;
+                    }
+                    summary += ` 관련 정보가 있습니다. 총 ${linkTexts.length}개의 공지사항이 게시되었습니다.`;
+                } else {
+                    summary = `오늘의 공지에는 총 ${linkTexts.length}개의 공지사항이 게시되었습니다.`;
+                }
+
+                return summary;
+            }
+
+            // 요약을 표시하는 함수
+            function displaySummary(summaryText) {
+                const contentDiv = document.querySelector('.content > div');
+
+                // 이미 요약 섹션이 있으면 제거
+                const existingSummary = document.getElementById('summary_section');
+                if (existingSummary) {
+                    existingSummary.remove();
+                }
+
+                // 새 요약 섹션 생성
+                const summarySection = document.createElement('div');
+                summarySection.id = 'summary_section';
+                summarySection.className = 'summary-container';
+
+                const summaryContent = document.createElement('p');
+                summaryContent.className = 'summary-text';
+                summaryContent.textContent = summaryText;
+
+                summarySection.appendChild(summaryContent);
+
+                // posts 섹션 앞에 삽입
+                const firstPostsDiv = contentDiv.querySelector('.posts');
+                contentDiv.insertBefore(summarySection, firstPostsDiv);
+            }
+
+            // Fetch department code and name
+            function loadDepartmentData() {
+                if (dbLoadStarted) return; // 이미 로딩 시작했으면 중복 요청 방지
+                dbLoadStarted = true;
+                console.log("부서 데이터 로딩 시작");
+
+                fetch("http://163.180.142.196:9090/today_api/dna")
+                    .then(response => response.json())
+                    .then(dna => {
+                        for (const [deptCode, deptInfo] of Object.entries(dna)) {
+                            const deptName = String(deptInfo[0]);
+                            if (deptCode[1] === '0' || deptCode[1] === 'S') {
+                                db[deptName] = deptCode;
+                            }
+                        }
+                        dbSortedKeys = Object.keys(db).sort();
+                        isDbLoaded = true;
+                        console.log("부서 데이터 로딩 완료");
+                    })
+                    .catch(error => {
+                        console.error("부서 데이터 로딩 오류:", error);
+                        dbLoadStarted = false; // 실패시 재시도 가능하도록
+                    });
+            }
+
+            // Event handlers for date change
+            function onButtonToPast() {
+                if (isLoadingPosts) return; // 로딩 중이면 중복 요청 방지
+
+                doActionDateDelta += 1;
+                const targetDate = new Date();
+                targetDate.setDate(targetDate.getDate() - doActionDateDelta);
+                doAction(formatDate(targetDate));
+            }
+
+            function onButtonToday() {
+                if (isLoadingPosts) return; // 로딩 중이면 중복 요청 방지
+
+                // 부서 데이터가 로드되지 않았거나 실패했으면 다시 시도
+                if (!isDbLoaded) {
+                    loadDepartmentData();
+                }
+
+                doActionDateDelta = 0;
+                doAction('today');
+            }
+
+            function onButtonToFuture() {
+                if (isLoadingPosts) return; // 로딩 중이면 중복 요청 방지
+
+                if (doActionDateDelta > 1) {
+                    doActionDateDelta -= 1;
+                    const targetDate = new Date();
+                    targetDate.setDate(targetDate.getDate() - doActionDateDelta);
+                    doAction(formatDate(targetDate));
+                } else {
+                    doAction('today');
+                }
+            }
+
+            // Attach event listeners
+            document.getElementById("submit_1").addEventListener("click", onButtonToPast);
+            document.getElementById("submit_2").addEventListener("click", onButtonToday);
+            document.getElementById("submit_3").addEventListener("click", onButtonToFuture);
+
+            // Main action function
+            function doAction(targetDate) {
+                isLoadingPosts = true;
+                retryCount = 0;
+
+                // 로딩 메시지로 상태 표시
+                const loadingMessage = document.querySelector('#display_recent_posts section:first-child .post-title');
+                if (loadingMessage) {
+                    loadingMessage.innerHTML = "데이터를 불러오는 중입니다 &#128337;";
+                }
+
+                // 부서 데이터가 아직 로드되지 않았다면 시작
+                if (!isDbLoaded && !dbLoadStarted) {
+                    loadDepartmentData();
+                }
+
+                loadPostData(targetDate);
+            }
+
+            // 게시물 데이터 로딩 함수
+            function loadPostData(targetDate) {
+                fetch(`http://163.180.142.196:9090/today_api/${targetDate}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        const stack = data.STACKS || [];
+                        updateDateDisplay(targetDate);
+
+                        if (stack.length === 0) {
+                            displayNoPosts();
+                        } else {
+                            // 부서 데이터가 로드되었는지 확인
+                            if (isDbLoaded) {
+                                processAndDisplayPosts(stack);
+                            } else {
+                                // 부서 데이터가 아직 로드되지 않았으면 기다렸다가 재시도
+                                retryWithDelay(stack, targetDate);
+                            }
+                        }
+                        isLoadingPosts = false;
+                    })
+                    .catch(error => {
+                        console.error("게시물 데이터 로딩 오류:", error);
+                        if (retryCount < MAX_RETRIES) {
+                            retryCount++;
+                            setTimeout(() => loadPostData(targetDate), 1000);
+                        } else {
+                            displayError("데이터를 불러오는데 실패했습니다.");
+                            isLoadingPosts = false;
+                        }
+                    });
+            }
+
+            // 부서 데이터가 로드될 때까지 기다렸다가 재시도
+            function retryWithDelay(stack, targetDate) {
+                if (isDbLoaded) {
+                    processAndDisplayPosts(stack);
+                    isLoadingPosts = false;
+                    return;
+                }
+
+                if (retryCount < MAX_RETRIES) {
+                    retryCount++;
+                    setTimeout(() => retryWithDelay(stack, targetDate), 1000);
+                } else {
+                    // 최대 재시도 횟수 초과
+                    displayError("부서 데이터를 불러오는데 실패했습니다.");
+                    isLoadingPosts = false;
+                }
+            }
+
+            // 오류 메시지 표시
+            function displayError(message) {
+                const loadingSection = document.querySelector('#display_recent_posts section:first-child');
+                if (loadingSection) {
+                    const title = loadingSection.querySelector('.post-title');
+                    const desc = loadingSection.querySelector('.post-description p:first-child');
+
+                    if (title) title.textContent = "일시적인 오류가 발생했습니다";
+                    if (desc) desc.innerHTML = message + " '오늘' 버튼을 눌러 다시 시도해 주세요.";
+                }
+            }
+
+            // Update date display
+            function updateDateDisplay(targetDate) {
+                const outputDate = document.getElementById("output_date");
+                if (targetDate === 'today') {
+                    outputDate.innerText = "오늘의 게시물";
+                } else {
+                    const [year, month, day] = targetDate.split("-");
+                    outputDate.innerText = `${year}년 ${month}월 ${day}일`;
+                }
+            }
+
+
+            // Display "no posts" message
+            function displayNoPosts() {
+                // 요약 섹션 업데이트 (공지사항 없음 메시지로)
+                displaySummary("오늘의 공지사항은 없습니다.");
+
+                // 핀 섹션 비우기
+                const pPosts = document.getElementById('display_pinned_posts');
+                pPosts.replaceChildren();
+
+                // 최근 게시물 섹션 비우기
+                const rPosts = document.getElementById('display_recent_posts');
+                rPosts.replaceChildren();
+
+                const section = document.createElement('section');
+                section.className = "post";
+
+                const header = document.createElement('header');
+                header.className = "post-header";
+
+                const title = document.createElement('h2');
+                title.className = "post-title";
+                title.textContent = "공지사항이 없습니다";
+
+                header.appendChild(title);
+
+                const description = document.createElement('div');
+                description.className = "post-description";
+
+                const paragraph = document.createElement('p');
+                paragraph.textContent = "다른 날자를 선택해 주세요.";
+
+                description.appendChild(paragraph);
+
+                section.appendChild(header);
+                section.appendChild(description);
+
+                rPosts.appendChild(section);
+            }
+
+            // processAndDisplayPosts 함수 수정
+            function processAndDisplayPosts(stack) {
+                const posts = {};
+                stack.forEach(item => {
+                    const deptCode = item[0];
+                    if (!posts[deptCode]) {
+                        posts[deptCode] = [];
+                    }
+                    posts[deptCode].push(item.slice(2));
+                });
+
+                const mergedDb = {};
+                dbSortedKeys.forEach(deptName => {
+                    const deptCode = db[deptName];
+                    if (posts[deptCode]) {
+                        mergedDb[deptName] = posts[deptCode];
+                    }
+                });
+
+                // 모든 링크 텍스트를 수집하여 요약
+                const allLinkTexts = [];
+                for (const deptPosts of Object.values(mergedDb)) {
+                    deptPosts.forEach(post => {
+                        allLinkTexts.push(post[0]);
+                    });
+                }
+
+                // 링크 텍스트로 요약 생성
+                const summary = generateSummary(allLinkTexts);
+
+                // 요약 섹션 표시
+                displaySummary(summary);
+
+                const rPosts = document.getElementById('display_recent_posts');
+                const pPosts = document.getElementById('display_pinned_posts');
+                rPosts.replaceChildren();
+                pPosts.replaceChildren();
+
+                const pinnedDept = [
+                    "소프트웨어융합대학",
+                    "소프트웨어융합학과",
+                    "소프트웨어융합학과.아고라",
+                    "소프트웨어융합학과.취업정보",
+                    "소프트웨어중심대학사업단"
+                ];
+
+                let flagPinnedPosts = false;
+
+                for (const [deptName, deptPosts] of Object.entries(mergedDb)) {
+                    const section = document.createElement('section');
+                    section.className = "post";
+                    section.id = `article_${db[deptName]}`;
+
+                    if (pinnedDept.includes(deptName)) {
+                        if (!flagPinnedPosts) {
+                            const pinnedTitle = document.createElement('h1');
+                            pinnedTitle.className = "content-subhead";
+                            pinnedTitle.textContent = "Pinned Posts";
+                            pPosts.appendChild(pinnedTitle);
+                            flagPinnedPosts = true;
+                        }
+                        pPosts.appendChild(section);
+                    } else {
+                        rPosts.appendChild(section);
+                    }
+
+                    const header = document.createElement('header');
+                    header.className = "post-header";
+
+                    const title = document.createElement('h2');
+                    title.className = "post-title";
+                    title.textContent = deptName.replace('.', ' ');
+
+                    header.appendChild(title);
+
+                    const description = document.createElement('div');
+                    description.className = "post-description";
+
+                    deptPosts.forEach(post => {
+                        const link = document.createElement('a');
+                        link.textContent = post[0];
+                        link.href = post[1];
+                        link.target = "_blank";
+                        description.appendChild(link);
+
+                        const br = document.createElement('br');
+                        description.appendChild(br);
+                    });
+
+                    section.appendChild(header);
+                    section.appendChild(description);
+                }
+            }
+
+            // Format date as YYYY-MM-DD
+            function formatDate(date) {
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const day = String(date.getDate()).padStart(2, '0');
+                return `${year}-${month}-${day}`;
+            }
+
+            // 초기화
+            loadDepartmentData();  // 부서 데이터 먼저 로드 시작
+            setTimeout(() => {
+                doAction('today');  // 약간의 지연 후 게시물 데이터 로드
+            }, 500);
+        });
+    </script>
+
+</body>
+
+</html>
